@@ -13,11 +13,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'brindon'
 api = Api(app)
 
-
-@app.before_first_request
-def create_tables():  # Creates tables based on above imports
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity)  # creates /auth
 
 api.add_resource(Item, '/item/<string:name>')
